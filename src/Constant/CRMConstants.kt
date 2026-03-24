@@ -7,4 +7,5 @@ object CRMConstants {
     const val ERROR_CUSTOMER_EMAIL_REQUIRED = "Customer email cannot be blank"
     const val ERROR_CUSTOMER_STATUS_REQUIRED = "Customer status cannot be null"
     const val ERROR_CUSTOMER_CREATED_AT_REQUIRED = "Customer creation date cannot be null"
+    const val ERROR_CUSTOMER_NOT_PREMIUM = "Customer is not premium"
 }
