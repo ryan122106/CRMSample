@@ -5,14 +5,16 @@ import com.example.crm.customer.model.Customer
 import com.example.crm.customer.model.CustomerStatus
 import com.example.crm.customer.repository.ICustomerRepository
 
-class PremiumCustomerServiceImpl(private val customerRepository: ICustomerRepository) : CustomerService {
+class PremiumCustomerServiceImpl(private val customerRepository: ICustomerRepository) : CustomerServiceImpl(customerRepository) {
     override fun createCustomer(customer: Customer): Customer {
-        validateCustomer(customer)
-        return customerRepository.create(customer)
+        if(!customer.isPremium){
+            throw IllegalArgumentException(CRMConstants.ERROR_CUSTOMER_NOT_PREMIUM)
+        }
+        return super.createCustomer(customer)
     }
 
     override fun updateCustomer(customer: Customer): Customer {
-        validateCustomer(customer)
+        super.createCustomer(customer)
         return customerRepository.update(customer)
     }
 
